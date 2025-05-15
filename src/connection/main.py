@@ -27,7 +27,7 @@ def broadcast_presence():
     soc.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 
     while True:
-        soc.sendto(PRESENCE_MESSAGE.encode(), ('255.255.255.255', BROADCAST_PORT))
+        soc.sendto(PRESENCE_MESSAGE.encode(), ('192.168.1.255', BROADCAST_PORT))
         time.sleep(BROADCAST_INTERVAL)
 
 
