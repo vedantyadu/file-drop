@@ -4,7 +4,7 @@ from connection import get_self_address, broadcast_presence, listen_for_peers
 from constants import LISTEN_INTERVAL
 
 
-if __name__ == "__main__":
+def main():
     self_address = get_self_address()
     available_peers = set()
 
@@ -24,3 +24,7 @@ if __name__ == "__main__":
         available_peers.clear()
         time.sleep(LISTEN_INTERVAL)
         print("Available peers:", list(available_peers))
+
+
+if __name__ == "__main__":
+    main()
