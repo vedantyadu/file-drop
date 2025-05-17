@@ -1,17 +1,16 @@
 import { ChildProcess, spawn } from 'child_process'
-import { ipcMain } from 'electron'
-import { connectionServiceChannels } from './ipc.js'
 
 export type Peer = {
   address: string
   id: string
 }
 
-export function spawnConnectionService() {
+export function spawnConnectionService(win: Electron.BrowserWindow) {
   const connectionService = spawn('python3', ['../service/main.py'])
 
   connectionService.stdout.on('data', (data: Buffer) => {
-    ipcMain.emit('AVAILABLE_PEERS', JSON.parse(data.toString()))
+    const parsed_data = JSON.parse(data.toString())
+    win.webContents.send('AVAILABLE_PEERS', parsed_data)
   })
 
   addCleanupListeners(connectionService)

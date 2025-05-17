@@ -15,7 +15,7 @@ function main() {
 
   mainWindow.loadURL('http://localhost:5173')
   mainWindow.webContents.openDevTools()
-  spawnConnectionService()
+  spawnConnectionService(mainWindow)
 }
 
 app.on('ready', main)
