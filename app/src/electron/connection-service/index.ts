@@ -11,10 +11,7 @@ export function spawnConnectionService() {
   const connectionService = spawn('python3', ['../service/main.py'])
 
   connectionService.stdout.on('data', (data: Buffer) => {
-    ipcMain.emit(
-      connectionServiceChannels.AVAILABLE_PEERS,
-      JSON.parse(data.toString())
-    )
+    ipcMain.emit('AVAILABLE_PEERS', JSON.parse(data.toString()))
   })
 
   addCleanupListeners(connectionService)

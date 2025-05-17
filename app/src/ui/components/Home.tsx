@@ -15,12 +15,14 @@ export default function Home() {
   useEffect(() => {
     // @ts-ignore
     window.connectionService.onRecieveAvailablePeers((data) => {
+      console.log(data)
       setPeers(data)
     })
   }, [])
 
   return (
     <div className='w-full h-full bg-neutral-950 flex items-center justify-center'>
+      <span>Peers:</span>
       <pre>{peers.join(',')}</pre>
     </div>
   )
