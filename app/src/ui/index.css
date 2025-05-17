@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@theme {
+  --font-poppins: "Poppins";
+}
+
+@layer base {
+  * {
+    @apply text-neutral-50 font-poppins
+  }
+}
