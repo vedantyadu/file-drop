@@ -22,7 +22,7 @@ def main():
     while True:
         available_peers.clear()
         time.sleep(LISTEN_INTERVAL)
-        print(json.dumps(list(map(lambda address: {"address": address, id: ""}, list(available_peers)))), flush=True, end="")
+        print(json.dumps(list(map(lambda address: {"address": address, "id": ""}, list(available_peers)))), flush=True, end="")
 
 
 if __name__ == "__main__":
